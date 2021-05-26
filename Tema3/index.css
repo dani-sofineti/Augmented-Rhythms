@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#app-container {
+  width: 780px;
+  height: 439px;
+  border: 1px solid black;
+  margin-top: 20px;
+  z-index: 2;
+  margin-left: 20px;
+  position: relative;
+  opacity: 0.7;
+}
+
+#grid-container {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.grid-cell {
+  width: 75px;
+  height: 60px;
+  background-color: black;
+  margin: 1px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 36px;
+  color: red;
+  border-radius: 10px;
+}
+
+.grid-cell:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.grid-cell.active {
+  background-color: lightgreen;
+}
+
+.grid-cell.animate {
+  animation-name: animate-cell;
+  animation-duration: 0.2s;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+@keyframes animate-cell {
+  from { transform: scale(1); }
+  to { transform: scale(1.4); }
+}
+
+.grid-play-btn, .grid-reset-btn {
+  width: 35px;
+  border: 1px solid;
+  padding: 5px;
+  margin: 2px;
+  background: white;
+}
+
+.grid-play-btn:hover, .grid-reset-btn:hover {
+  cursor: pointer;
+  background-color: lightgreen;
+}
+
+#video-input {
+  display: none;
+}
+
+#canvas-output {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 1px solid;
+  z-index: 1;
+}
+
+h1 {
+  margin: 5px 0 0 20px;
+  font-size: 60px;
+}
+
+h3 {
+  margin: 5px 0 0 20px;
+  font-style: italic;
+  color: red;
+}

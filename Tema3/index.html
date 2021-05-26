@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Augmented Rythms</title>
+    <link href="index.css" rel="stylesheet"/>
+    <script type="module" src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app-container">
+      <h1 id="calculation-result"></h1>
+      <div id="grid-container">
+      </div>
+      <h3>In case on emergency, use mouse click event!</h3>
+    </div>
+    
+    <video id="video-input"></video>
+    <canvas id="canvas-output" width="780" height="439"></canvas>
+  </body>
+</html>
