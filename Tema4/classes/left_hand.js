@@ -15,7 +15,7 @@ export default class LeftHand extends Hand {
         if (!this.indexTip) return;
         const {x, y} = this.indexTip;
         ctx.save();
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'red';
         ctx.font = '26px Arial';
         ctx.fillText(
             `Fingers left hand: ${this.fingers.length}`,

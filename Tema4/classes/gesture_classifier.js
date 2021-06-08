@@ -73,17 +73,16 @@ export default class GestureClassifier {
         const example = this.mobilenet.infer(img, 'conv_preds');
         const result = await this.classifier.predictClass(example);
         const {label, confidences} = result;
-
-        console.log(label, confidences[label]);
-
+        const shapeDOM = document.getElementById('shape');
         if (confidences[label] === 1 && label !== 'default') {
             const btn = document.getElementById(label);
             if (!btn.classList.contains('predicted')) {
                 btn.classList.add('predicted');
-                
+                shapeDOM.classList = '';
+                shapeDOM.classList.add(label)
             }
-
             setTimeout(() => btn.classList.remove('predicted'), 500)
         }
+        img.dispose();
     }
 }

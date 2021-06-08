@@ -4,7 +4,7 @@ import Shape from './shape.js'
 export default class App {
 
     init() {
-        // this.initializeShape();
+        this.initializeShape();
         this.initializeMediaPipe();
     }
 

@@ -1,6 +1,6 @@
 import RightHand from './right_hand.js'
 import LeftHand from './left_hand.js'
-// import GestureClassifier from './gesture_classifier.js'
+import GestureClassifier from './gesture_classifier.js'
 
 export default class HandDetection {
     
@@ -14,8 +14,8 @@ export default class HandDetection {
         this.initializeCamera(); 
         this.rightHand = new RightHand();
         this.leftHand = new LeftHand();
-        // this.gestureClassifier = new GestureClassifier();
-        // this.gestureClassifier.init();
+        this.gestureClassifier = new GestureClassifier();
+        this.gestureClassifier.init();
     }
 
     initializeElements() {
@@ -55,15 +55,15 @@ export default class HandDetection {
     onResults(results) {
         this.canvasCtx.save();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
-        // this.canvasCtx.drawImage(
-        //     results.image, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        this.canvasCtx.drawImage(
+            results.image, 0, 0, this.canvasElement.width, this.canvasElement.height);
 
         if (results.rightHandLandmarks) {
           this.rightHand.updateLandmarks(results.rightHandLandmarks);
           this.rightHand.draw(this.canvasCtx, results.rightHandLandmarks);
           this.rightHand.identifyRaisedFingers();
-          // this.gestureClassifier.addExample(results.image);
-          // this.gestureClassifier.predict(results.image);
+          this.gestureClassifier.addExample(results.image);
+          this.gestureClassifier.predict(results.image);
         }
         
         if (results.leftHandLandmarks) {

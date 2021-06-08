@@ -51,22 +51,34 @@
     border-color: red;
   }
   #gesture-1 {
-    border-color: green;
+    border-color: green
   }
   #gesture-2 {
     border-color: blue;
   }
   #gesture-3 {
-    border-color: violet;
+    border-color: grey;
   }
   #gesture-4 {
     border-color: orange;
   }
   
+  .gesture-0 {
+    background-color: red !important;
+  }
+  .gesture-1 {
+    background-color: green !important;
+  }
+  .gesture-2 {
+    background-color: blue !important;
+  }
+  .gesture-3 {
+    background-color: grey !important;
+  }
+  .gesture-4 {
+    background-color: orange !important;
+  }
+  
   .gesture-classifier-btn.training {
     border: 2px solid;
-  }
-
-  .gesture-classifier-btn.predicted {
-    background-color: lightsteelblue;
   }
