@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Answer the Question</title>
+    <script type="module" src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.12/Tone.js" integrity="sha512-MyXAzMk3sw/i85erXXKd2+z2fzlmKD15TzKKwZd541ifNwUQ8Z73CfAwuyIPc0p5bL7xEA3u/l+/V0K9IyPbCg==" crossorigin="anonymous"></script>
+    <link href="index.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div id="app-container">
+      <div id="question-container"></div>
+      <div id="answer-container"></div>
+    </div>
+    <video id="video-input"></video>
+    <canvas id="canvas-output" width="780" height="439"></canvas>
+  </body>
+</html>

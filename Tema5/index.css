@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+  
+#app-container {
+    width: 780px;
+    height: 439px;
+    border: 1px solid black;
+    margin-top: 20px;
+    z-index: 2;
+    margin-left: 20px;
+    position: relative;
+    opacity: 0.7;
+}
+
+#question-container {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.question {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}
+
+.answer {
+    border-color: 2px solid black;
+    background-color: silver;
+    margin: 15px;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 26px;
+    color: black;
+    border-radius: 5px;
+}
+
+.answer-correct {
+    background-color: green !important;
+}
+
+.answer-false {
+    background-color: red !important;
+}
+
+.answer:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+#video-input {
+    display: none;
+}
+
+#canvas-output {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: 1px solid;
+    z-index: 1;
+}
