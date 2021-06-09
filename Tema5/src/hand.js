@@ -9,6 +9,7 @@ export default class Hand {
         const indexFingerY = this.indexFingerTip.y * 439 + 20;
         const itemX = clientRect.x;
         const itemY = clientRect.y;
+        if (item.classList.contains('recently-activated-by-touch')) return;
         return (
             indexFingerX > itemX && indexFingerX < clientRect.right &&
             indexFingerY > itemY && indexFingerY < clientRect.bottom
@@ -28,6 +29,10 @@ export default class Hand {
                   if (this.isItemPressed(answerEl)) {
                       if (this.alreadyAnswered(answerEl)) return;
                       this.question.verifyAnswer(answerEl)
+                      answerEl.classList.add('recently-activated-by-touch');
+                      setTimeout(() => {
+                        answerEl.classList.remove('recently-activated-by-touch');
+                      }, 1000);
                   }
               });
           }
