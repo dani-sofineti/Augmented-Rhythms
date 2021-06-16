@@ -1,4 +1,8 @@
-const config = {
+const configCamera = {
+    cameraWidth: 780,
+    cameraHeight: 439,
+    cameraNormalizedWidth: 745,
+    cameraNormalizedHeight: 414,
     handDetection: {
         url: 'https://cdn.jsdelivr.net/npm/@mediapipe/holistic/',
         options: {
@@ -10,4 +14,4 @@ const config = {
     }
 }
 
-export default config;
+export default configCamera;

@@ -1,4 +1,3 @@
-import config from '../config/config.js';
 import HandDetection from '../hand/hand_detection.js'
 
 export default class App {
@@ -8,7 +7,7 @@ export default class App {
     }
 
     initializeMediaPipe() {
-        const handDetection = new HandDetection(this.shape);
+        const handDetection = new HandDetection();
         handDetection.init();
     }
 }

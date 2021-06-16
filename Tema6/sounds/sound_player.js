@@ -1,3 +1,4 @@
+import configSound from '../config/config_sound.js'
 
 export default class SoundPlayer {
     
@@ -15,7 +16,7 @@ export default class SoundPlayer {
             if (this.interval) clearInterval(this.interval);
             this.interval = setInterval(() => {
                 this.soundGenerator.generateSound();
-            }, (this.currentlyRaisedFingers + 1) * 300);
+            }, (this.currentlyRaisedFingers + 1) * configSound.soundPace);
             this.previouslyRaisedFingers = this.currentlyRaisedFingers.valueOf();
         }
     }

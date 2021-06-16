@@ -1,12 +1,8 @@
 import HandInteraction from "./hand_interaction.js";
-import config from "../config/config.js";
+import configCamera from "../config/config_camera.js";
 
 export default class HandDetection {
     
-    constructor(shape) {
-      this.shape = shape;
-    }
-
     init() {
         this.initializeElements();
         this.initializeHolistic();
@@ -22,16 +18,9 @@ export default class HandDetection {
 
     initializeHolistic() {
         this.holistic = new Holistic({locateFile: (file) => {
-          return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`;
-        }})
-        
-        this.holistic.setOptions({
-          modelComplexity: 1,
-          smoothLandmarks: true,
-          minDetectionConfidence: 0.5,
-          minTrackingConfidence: 0.5
-        });
-    
+          return `${configCamera.handDetection.url}${file}`
+        }});
+        this.holistic.setOptions(configCamera.handDetection.options);
         this.holistic.onResults(this.onResults.bind(this));
     }
 
@@ -41,8 +30,8 @@ export default class HandDetection {
             onFrame: async () => {
               await this.holistic.send({image: this.videoElement});
             },
-            width: 780,
-            height: 439
+            width: configCamera.cameraWidth,
+            height: configCamera.cameraHeight
           }
         )
         camera.start();

@@ -1,5 +1,7 @@
 import SoundPlayer from '../sounds/sound_player.js';
 import SoundGenerator from '../sounds/sound_generator.js';
+import configCamera from "../config/config_camera.js";
+import configSound from '../config/config_sound.js'
 
 export default class HandInteraction {
 
@@ -21,9 +23,9 @@ export default class HandInteraction {
         ctx.fillStyle = 'black';
         ctx.font = '26px Arial';
         ctx.fillText(
-            `${this.fingers.length} Fingers [at ${(this.fingers.length + 1) * 300} miliseconds]`,
-            x * 780 - 35,
-            y * 439 - 25
+            `${this.fingers.length} Fingers [at ${(this.fingers.length + 1) * configSound.soundPace} miliseconds]`,
+            x * configCamera.cameraNormalizedWidth,
+            y * configCamera.cameraNormalizedHeight
         );
         ctx.restore();
     }
