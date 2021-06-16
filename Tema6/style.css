@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #video-input {
+    display: none;
+  }
+  
+  #canvas-output {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: 1px solid;
+    z-index: 1;
+  }
+  
