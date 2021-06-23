@@ -5,7 +5,7 @@ async function getRandomUser() {
     const data = await result.json();
     const finalResult = data.results[0];
 
-    document.getElementById("name").innerText = finalResult.name.first + ' ' + finalResult.name.last;
+    document.getElementById("name").innerText = `${finalResult.name.first} ${finalResult.name.last}`;
     document.getElementById("gender").innerText = finalResult.gender;
     document.getElementById("email").innerText = finalResult.email;
     document.getElementById("age").innerText = finalResult.dob.age;
