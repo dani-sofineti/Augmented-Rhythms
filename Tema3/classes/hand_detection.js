@@ -1,4 +1,4 @@
-import RightHand from './right_hand.js';
+import Hand from './hand.js';
 
 export default class HandDetection {
   constructor(calculator) {
@@ -9,7 +9,7 @@ export default class HandDetection {
     this.initializeElements();
     this.initializeHolistic();
     this.initializeCamera();
-    this.rightHand = new RightHand(this.calculator);
+    this.hand = new Hand(this.calculator);
   }
 
   initializeElements() {
@@ -24,6 +24,7 @@ export default class HandDetection {
     }})
     
     this.holistic.setOptions({
+      selfieMode: true,
       modelComplexity: 1,
       smoothLandmarks: true,
       minDetectionConfidence: 0.5,
@@ -51,8 +52,14 @@ export default class HandDetection {
     this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     this.canvasCtx.drawImage(
         results.image, 0, 0, this.canvasElement.width, this.canvasElement.height);
-    this.rightHand.updateLandmarks(results.rightHandLandmarks);
-    this.rightHand.draw(this.canvasCtx);
+    if (results.rightHandLandmarks) {
+      this.hand.updateLandmarks(results.rightHandLandmarks);
+      this.hand.draw(this.canvasCtx);
+    }
+    if (results.leftHandLandmarks) {
+      this.hand.updateLandmarks(results.leftHandLandmarks);
+      this.hand.draw(this.canvasCtx);
+    }
     this.canvasCtx.restore();
   }
 }

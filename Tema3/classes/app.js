@@ -13,7 +13,6 @@ export default class App {
         rowClass: 'grid-row',
         cellClass: 'grid-cell',
         cellValueClass: 'grid-cell-value'
-        
     });
     this.calculator.init();
   }

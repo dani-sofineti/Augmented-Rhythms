@@ -80,10 +80,16 @@
 h1 {
   margin: 5px 0 0 20px;
   font-size: 60px;
+  color: red;
 }
 
 h3 {
   margin: 5px 0 0 20px;
   font-style: italic;
   color: red;
+}
+
+.recently-activated-by-touch {
+  background-color: rgb(250, 250, 250);
+  opacity: 0.7;
 }

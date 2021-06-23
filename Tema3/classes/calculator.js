@@ -1,33 +1,28 @@
+import configCalculator from '../config/config-calculator.js';
+
 export default class Calculator {
+    cellLabels = configCalculator.allLabels;
+    operators = configCalculator.operators;
+    resetOperator = configCalculator.resetOperator;
+    equalOperator = configCalculator.equalOperator;
+    doubleZero = configCalculator.doubleZero;
+    onCommand = configCalculator.onCommand;
+    offCommand = configCalculator.offCommand;
+    
+    cells = []
+    expression = 0;
+    lastExpressionItem; 
+    resultValidated = false;
+    isOn = false;
+    noOfRows = 5;
+    noOfCells = 4;
+    
     constructor(options) {
         this.rootId = options.rootId;
         this.rowClass = options.rowClass;
         this.cellClass = options.cellClass;
-        this.noOfRows = 5;
-        this.noOfCells = 4;
         this.gridContainer = document.getElementById(this.rootId);
-        this.cells = []
-        // gonna make this properties STARTING here 
-        this.cellLabels = [
-            'on', 'off', 'C', '/',
-            7, 8, 9, '+',
-            4, 5, 6, '-',
-            1, 2, 3, '*',
-            0, '00', '=', '.',   
-        ];
-        this.operators = ['+','-','/','*', '=', 'C', 'on', 'off', '00'];
-        this.resetOperator = 'C'
-        this.equalOperator = '='
-        this.doubleZero = '00'
-        this.onCommand = 'on';
-        this.offCommand = 'off';
-        // AND ENDING here more pretty in a next commit 
-
         this.calculationResult = document.getElementById('calculation-result');
-        this.expression;
-        this.lastExpressionItem; 
-        this.resultValidated = false;
-        this.isOn = false;
     }
 
     init() {
@@ -58,7 +53,8 @@ export default class Calculator {
     }  
 
     checkCellLabel(cell) {
-        const cellValue = cell.innerText;
+        const cellValue = cell?.innerText;
+        if (!cellValue) return;
         if (this.operators.includes(cellValue)) { 
             this.handleOperators(cellValue);
         } 
@@ -79,7 +75,7 @@ export default class Calculator {
                 break;
             case this.doubleZero:
                 if (!this.isOn) break;
-                if (this.expression != 0 && this.expression != undefined) {
+                if (this.expression !== 0 && this.expression !== undefined) {
                     this.setLastExpressionItem()
                     if (!this.operators.includes(this.lastExpressionItem)) {
                         this.expression += cellValue;
@@ -87,6 +83,7 @@ export default class Calculator {
                     }
                 }
                 break;
+
             case this.onCommand:
                 if (!this.isOn) {
                     this.isOn = true;
@@ -98,7 +95,7 @@ export default class Calculator {
                 this.isOn = false;
                 this.expression = undefined;
                 this.calculationResult.innerText = '';
-
+            
             default:
                 if (!this.isOn) break;
                 this.setLastExpressionItem();
@@ -112,10 +109,12 @@ export default class Calculator {
                         // remove the old one and replace with the selected operator 
                         this.expression = this.expression.slice(0, -1);
                         this.expression += cellValue;
+                        this.calculationResult.innerText = this.expression;
                     }
                 }
                 else {
                     this.expression += cellValue;
+                    this.calculationResult.innerText = this.expression; 
                 }
             break;
         }
@@ -138,7 +137,7 @@ export default class Calculator {
 
     evalExpression() {
         if (!this.isOn) return;
-        let val = eval(this.expression);
+        const val = stringMath(this.expression);
         if (val !== undefined) {
             this.expression = val;
             this.calculationResult.innerText = this.expression;
@@ -146,6 +145,8 @@ export default class Calculator {
     }
 
     setLastExpressionItem() {
+        if (!this.expression) return;
         this.lastExpressionItem = String(this.expression).substr(this.expression.length - 1);
     }
+
 }
